@@ -1,0 +1,64 @@
+/** 
+ *   Nao foram alterados os breakpoints do bootstrap, pois o padrao funciona bem para o projeto.
+ *   Nao foi utilizado nenhuma ferramenta de extensao como SASS e LESS para simplicidade do projeto, que possui poucas regras.
+ */
+
+body {
+	overflow-x: hidden;
+	padding-bottom: 40px;
+	font-family: 'Lato', sans-serif;
+}
+
+a {
+	cursor: pointer;
+}
+
+/** CONTAINER **/
+
+.main-container {
+	padding-top: 30px;
+}
+
+/** BOOK **/
+
+.card {
+	border: none;
+}
+
+.card .card-body {
+	text-align: center;
+}
+
+/* nao usam o .card-body tambem para evitar aninhamento e, consequentemente, problemas de performance, especializacao de regras e aumento da dificuldade de manutencao */
+.card img { 
+	/* nao ha tratamento no tamanho dela com o intuito de garantir sempre as mesmas dimensoes para assegurar a proporcao de cada imagem. */
+	margin-bottom: 8px;
+}
+
+.card h5 {
+	font-weight: 400;
+}
+
+.card h6 {
+	font-size: 14px;
+}
+
+.card a {
+	font-size: 13px;
+}
+
+/** ALERT **/
+
+.alert {
+	text-align: center;
+}
+
+/** UTIL **/
+
+.text-align-center {
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}

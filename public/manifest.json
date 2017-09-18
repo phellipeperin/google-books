@@ -1,0 +1,7 @@
+{
+  "short_name": "Projeto RD - Phellipe Perin",
+  "name": "Projeto Desafio Frontend RD - Phellipe Perin",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff"
+}
