@@ -5,7 +5,6 @@ Projeto Desafio Frontend RD - Phellipe Perin
 
 Domínio: Google Books
   - Autores
-  - Categorias
   - Data de Publicação
   - Descrição
   - Imagem
