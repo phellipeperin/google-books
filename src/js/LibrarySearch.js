@@ -19,16 +19,7 @@ class LibrarySearch extends React.Component {
 	}
 
     handleSearch(event) {
-        if(this.state.searchTerm && this.state.searchTerm.trim()) { //Cuidado com espacoes em branco e strings nulas/undefined
-            var term = this.state.searchTerm.replace(new RegExp(' ', 'g'), '+'); //Esse e um ponto que poderia ser colocado em outro lugar
-            fetch('https://www.googleapis.com/books/v1/volumes?q='+term+'&orderBy=relevance&maxResults='+this.props.booksPerPage+'&startIndex='+((this.props.currentPage-1)*this.props.booksPerPage))
-                .then(response => response.json())
-                .then(response => { 
-                    if(response) {
-                        this.props.callbackParent(response, this.state.searchTerm);
-                    } 
-                });
-        }
+        this.props.callbackParent(this.state.searchTerm);
     }
 
     handleChangeSearchTerm(event) {

@@ -24,22 +24,32 @@ class Library extends React.Component {
         }
     }
 
-    onSearchChange(newList, searchTerm) {
-        this.setState({ bookCollection: newList.items, totalSearchAmount: newList.totalItems, searchTerm: searchTerm });
-        console.log(this.state.bookCollection);
+    handleSearch(searchTerm, newPage) {
+        if(searchTerm && searchTerm.trim()) { //Cuidado com espacoes em branco e strings nulas/undefined
+            var term = searchTerm.replace(new RegExp(' ', 'g'), '+'); //Esse e um ponto que poderia ser colocado em outro lugar
+            if(!newPage) newPage = this.state.currentPage;
+
+            fetch('https://www.googleapis.com/books/v1/volumes?q='+term+'&orderBy=relevance&maxResults='+this.state.booksPerPage+'&startIndex='+((newPage-1)*this.state.booksPerPage))
+                .then(response => response.json())
+                .then(response => { 
+                    if(response) {
+                        this.setState({ bookCollection: response.items, totalSearchAmount: response.totalItems, searchTerm: searchTerm, currentPage: newPage });
+                    } 
+                });
+        }
     }
 
     onPageChange(newPage) {
-        this.setState({ currentPage: newPage });
+        this.handleSearch(this.state.searchTerm, newPage);
     }
 
   	render() {
     	return (
     		<div>
-    			<div id="searchContainer" className="container main-container">
+                <div id="searchContainer" className="container main-container">
     				<LibrarySearch 	booksPerPage={this.state.booksPerPage} 
     								currentPage={this.state.currentPage} 
-    								callbackParent={(newList) => this.onSearchChange(newList)} 
+    								callbackParent={(searchTerm) => this.handleSearch(searchTerm)} 
     				/>
     			</div>
     			<div id="bookListContainer" className="container main-container">
